@@ -229,15 +229,6 @@ class CorrelationClustering:
     def get_disagreements(self):
         return self.disagreements_pivot, self.disagreements_modified
 
-# To parse .mat files
-def sparse_to_adjacency_list(sparse_matrix):
-    adjacency_list = defaultdict(set)
-    coo = sparse_matrix.tocoo()  # Convert to COO format
-    for i, j in zip(coo.row, coo.col):
-        adjacency_list[i].add(j)
-        adjacency_list[j].add(i)  # Undirected graph
-    return adjacency_list
-
 
 # Constructing the SBM  
 def generate_clustered_graph(num_nodes, num_clusters):
